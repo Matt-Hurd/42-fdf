@@ -10,7 +10,6 @@ EXT =	$(IDIR)$(NAME:.a=.h)
 EXT +=	Makefile
 
 SRC	+=	ft_drawline.c \
-		trig.c \
 		matrix_math.c \
 		transform_matrix.c \
 		initializers.c

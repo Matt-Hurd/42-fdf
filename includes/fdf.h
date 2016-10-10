@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 16:06:16 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/10 01:13:34 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/10 02:25:55 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 
-# define WINDOW_SIZE_X 1000
-# define WINDOW_SIZE_Y 700
 
 /*
 ** KEYS
@@ -44,4 +42,6 @@
 
 t_plot		*parse_file(char *filename);
 void		draw_everything(t_data *d);
+int			key_hook(int keycode, t_data *d);
+void		draw_reload(t_data *d);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 16:48:59 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/09 01:23:09 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/10 02:25:17 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,21 @@ static void			find_deltas(float *delta, t_3d p0, t_3d p1)
 	delta[2] = p1.z - p0.z;
 }
 
+static void			draw_point(t_data *d, int x, int y, int z)
+{
+	int i;
+	int color;
+
+	if (x > 0 && y > 0 && x < WINDOW_SIZE_X && y < WINDOW_SIZE_Y)
+	{
+		color = color_by_height(z);
+		i = (x * 4) + (y * d->s_line);
+		d->pixel_img[i] = color;
+		d->pixel_img[++i] = color >> 8;
+		d->pixel_img[++i] = color >> 16;
+	}
+}
+
 /*
 ** Bresenham's line algorithm
 */
@@ -68,8 +83,7 @@ void				ft_3d_drawline(t_data *d, t_3d p0, t_3d p1)
 	error = -1.0;
 	while ((int)p0.x != (int)p1.x)
 	{
-		mlx_pixel_put(d->mlx, d->win, dir ? p0.y : p0.x,
-			dir ? p0.x : p0.y, color_by_height(p0.z));
+		draw_point(d, dir ? p0.y : p0.x, dir ? p0.x : p0.y, p0.z);
 		error += deltaerr;
 		if (error >= 0.0)
 		{

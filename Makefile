@@ -6,7 +6,7 @@
 #    By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/28 19:34:56 by mhurd             #+#    #+#              #
-#    Updated: 2016/10/09 23:55:25 by mhurd            ###   ########.fr        #
+#    Updated: 2016/10/10 02:01:33 by mhurd            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME	= fdf
 
 SRC		= main.c \
 		  parser.c \
-		  renderer.c
+		  renderer.c \
+		  hooks.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

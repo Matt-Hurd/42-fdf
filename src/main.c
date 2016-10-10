@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 15:35:03 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/10 01:14:40 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/10 02:33:00 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ Translation:\n\
 Rotation:\n\
 	X: Keypad: 1, 4\n\
 	Y: Keypad: 2, 5\n\
-	Z: Keypad: 3, 6\n\
 \n\
 Zoom:\n\
 	IN: Keypad: +\n\
