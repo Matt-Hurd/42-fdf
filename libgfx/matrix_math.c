@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 18:10:40 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/09 01:20:43 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/10 01:22:00 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,23 @@ void	ft_mat_mult(float mat1[4][4], float mat2[4][4], float dest[4][4])
 
 void	ft_vec_mult_mat(t_3d *s, float mat[4][4], t_3d *d)
 {
-	d->x = s->x * mat[0][0] +
+	float x;
+	float y;
+	float z;
+
+	x = s->x * mat[0][0] +
 		s->y * mat[1][0] +
 		s->z * mat[2][0] +
 		mat[3][0];
-	d->y = s->x * mat[0][1] +
+	y = s->x * mat[0][1] +
 		s->y * mat[1][1] +
 		s->z * mat[2][1] +
 		mat[3][1];
-	d->z = s->x * mat[0][2] +
+	z = s->x * mat[0][2] +
 		s->y * mat[1][2] +
 		s->z * mat[2][2] +
 		mat[3][2];
+	d->x = x;
+	d->y = y;
+	d->z = z;
 }

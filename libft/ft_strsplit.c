@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 23:23:39 by mhurd             #+#    #+#             */
-/*   Updated: 2016/09/22 00:20:02 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/09 19:40:43 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,6 @@ static int		ft_find_word(const char *str, int i, char **ret, char c)
 		ft_strncpy(ret[i], str, len);
 	}
 	return (space + len);
-}
-
-static int		ft_count_words(const char *str, int i, char c)
-{
-	while (*str == c)
-		str++;
-	while (*str)
-	{
-		while (*str && *str != c)
-			str++;
-		while (*str == c)
-			str++;
-		i++;
-	}
-	return (i);
 }
 
 char			**ft_strsplit(char const *s, char c)

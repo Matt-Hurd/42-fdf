@@ -12,7 +12,8 @@ EXT +=	Makefile
 SRC	+=	ft_drawline.c \
 		trig.c \
 		matrix_math.c \
-		transform_matrix.c
+		transform_matrix.c \
+		initializers.c
 
 O =		$(addprefix $(ODIR), $(OBJ))
 

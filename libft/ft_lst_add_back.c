@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trig.c                                             :+:      :+:    :+:   */
+/*   ft_lst_add_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/08 18:22:26 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/09 19:36:51 by mhurd            ###   ########.fr       */
+/*   Created: 2016/09/22 02:02:39 by mhurd             #+#    #+#             */
+/*   Updated: 2016/10/09 23:00:35 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libgfx.h"
+#include "libft.h"
 
-float g_sin_table[360];
-float g_cos_table[360];
-
-void	init_trig(void)
+void	ft_lst_add_back(t_list **alst, t_list *new)
 {
-	int	d;
-
-	d = -1;
-	while (++d < 360)
+	t_list	*curr;
+	
+	if (!new || !alst)
+		return ;
+	if (!*alst)
+		*alst = new;
+	else
 	{
-		g_sin_table[d] = sin(d * M_PI / 128.0);
-		g_cos_table[d] = cos(d * M_PI / 128.0);
+		curr = *alst;
+		while (curr->next)
+			curr = curr->next;
+		curr->next = new;
 	}
-}
-
-float	ft_sin(int x)
-{
-	return (g_sin_table[ABS((int)x % 360)]);
-}
-
-float	ft_cos(int x)
-{
-	return (g_cos_table[ABS((int)x % 360)]);
 }

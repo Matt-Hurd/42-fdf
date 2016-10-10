@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trig.c                                             :+:      :+:    :+:   */
+/*   initializers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/08 18:22:26 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/09 19:36:51 by mhurd            ###   ########.fr       */
+/*   Created: 2016/10/09 19:49:17 by mhurd             #+#    #+#             */
+/*   Updated: 2016/10/10 00:00:37 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgfx.h"
 
-float g_sin_table[360];
-float g_cos_table[360];
-
-void	init_trig(void)
+t_3d	*ft_make_3d(int x, int y, int z)
 {
-	int	d;
+	t_3d *ret;
 
-	d = -1;
-	while (++d < 360)
-	{
-		g_sin_table[d] = sin(d * M_PI / 128.0);
-		g_cos_table[d] = cos(d * M_PI / 128.0);
-	}
+	ret = (t_3d *)ft_memalloc(sizeof(t_3d));
+	ret->x = x;
+	ret->y = y;
+	ret->z = z;
+	return (ret);
 }
 
-float	ft_sin(int x)
+t_vertex	*ft_make_vertex(int x, int y, int z)
 {
-	return (g_sin_table[ABS((int)x % 360)]);
-}
+	t_vertex *ret;
 
-float	ft_cos(int x)
-{
-	return (g_cos_table[ABS((int)x % 360)]);
+	ret = (t_vertex *)ft_memalloc(sizeof(t_vertex));
+	ret->local = ft_make_3d(x, y, z);
+	ret->world = ft_make_3d(0, 0, 0);
+	ret->aligned = ft_make_3d(0, 0, 0);
+	return (ret);
 }

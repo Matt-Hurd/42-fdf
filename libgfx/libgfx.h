@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 16:42:11 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/09 01:23:14 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/10 01:26:50 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdlib.h>
 # include <math.h>
 # define ABS(x) ((x > 0) ? x : x * -1)
-# define COLOR1 0x20BDA1
-# define COLOR2 0x6173E8
+# define COLOR2 0x16A085
+# define COLOR1 0xF4D03F
 
 typedef struct	s_2d
 {
@@ -35,16 +35,27 @@ typedef struct	s_3d
 
 typedef struct	s_vertex
 {
-	t_3d	local;
-	t_3d	world;
-	t_3d	aligned;
+	t_3d	*local;
+	t_3d	*world;
+	t_3d	*aligned;
 }				t_vertex;
+
+typedef struct	s_plot
+{
+	t_vertex	***points;
+	int		width;
+	int		height;
+	int		z_min;
+	int		z_max;
+}				t_plot;
 
 typedef struct	s_data
 {
 	void	*mlx;
 	void	*win;
 	void	*img;
+	void	*pixel_img;
+	t_plot	*plot;
 }				t_data;
 
 void			ft_mat_copy(float source[4][4], float dest[4][4]);
@@ -58,4 +69,6 @@ void			ft_tr_rotate(float matrix[4][4], int ax, int ay, int az);
 void			init_trig(void);
 void			ft_make_identity_matrix(float matrix[4][4]);
 void			ft_3d_drawline(t_data *d, t_3d p1, t_3d p2);
+t_3d			*ft_make_3d(int x, int y, int z);
+t_vertex		*ft_make_vertex(int x, int y, int z);
 #endif

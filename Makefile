@@ -6,13 +6,15 @@
 #    By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/28 19:34:56 by mhurd             #+#    #+#              #
-#    Updated: 2016/10/08 17:42:44 by mhurd            ###   ########.fr        #
+#    Updated: 2016/10/09 23:55:25 by mhurd            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= fdf
 
-SRC		= main.c
+SRC		= main.c \
+		  parser.c \
+		  renderer.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

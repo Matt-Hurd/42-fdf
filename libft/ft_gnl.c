@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_gnl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:30:44 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/06 15:52:56 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/09 20:16:32 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static char			*handle_data(int count, char **ret, \
 	return (ft_strchr(buff, '\n'));
 }
 
-int					get_next_line(const int fd, char **line)
+int					ft_get_next_line(const int fd, char **line)
 {
 	static t_list	*extra_list;
 	char			*ret;
