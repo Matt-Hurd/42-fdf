@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/09 19:26:41 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/09 23:27:27 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/15 11:28:05 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,12 @@ t_plot		*parse_file(char *filename)
 		if (plot->width == -1)
 			plot->width = ft_count_words(buff, 0, ' ');
 		if (plot->width != ft_count_words(buff, 0, ' '))
-			return (0); //Error handling here, invalid line size
+			ft_error("Invalid Map");
 		ft_lst_add_back(&list, ft_lstnew(buff, sizeof(char) * (ft_strlen(buff) + 1)));
 		(plot->height)++;
 	}
+	if (result < 0)
+		ft_error_unknown();
 	list_to_array(plot, list);
 	close(fd);
 	return (plot);

@@ -47,8 +47,8 @@ typedef struct	s_plot
 	t_vertex	***points;
 	int		width;
 	int		height;
-	int		z_min;
-	int		z_max;
+	float	z_min;
+	float	z_max;
 }				t_plot;
 
 typedef struct	s_data
@@ -59,6 +59,7 @@ typedef struct	s_data
 	char	*pixel_img;
 	float	xr;
 	float	yr;
+	float	zr;
 	float	scale;
 	float	xtrans;
 	float	ytrans;

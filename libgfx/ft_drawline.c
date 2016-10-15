@@ -27,14 +27,15 @@ static int			swap_vars(t_3d *p0, t_3d *p1)
 	return (1);
 }
 
-static unsigned int	color_by_height(float z)
+static unsigned int	color_by_height(float z, t_data *d)
 {
 	unsigned char	red;
 	unsigned char	green;
 	unsigned char	blue;
 	float			percent;
 
-	percent = fabs(z) / 10.0;
+	percent = (z + fabs(d->plot->z_min)) / (d->plot->z_max - d->plot->z_min);
+	percent = MIN(MAX(percent, 0), 1);
 	red = ((COLOR2 >> 16) - (COLOR1 >> 16) * percent);
 	red += COLOR1 >> 16;
 	green = ((COLOR2 >> 8 & 0xFF) - (COLOR1 >> 8 & 0xFF)) * percent;
@@ -58,7 +59,7 @@ static void			draw_point(t_data *d, int x, int y, int z)
 
 	if (x > 0 && y > 0 && x < WINDOW_SIZE_X && y < WINDOW_SIZE_Y)
 	{
-		color = color_by_height(z);
+		color = color_by_height(z, d);
 		i = (x * 4) + (y * d->s_line);
 		d->pixel_img[i] = color;
 		d->pixel_img[++i] = color >> 8;

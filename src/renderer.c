@@ -43,7 +43,6 @@ void	setup_world(t_data *d)
 		-(d->plot->height / 2),
 		0);
 
-	ft_tr_scale(global_matrix, 1, 1, 0.5);
 	int x, y;
 	y = -1;
 	while (++y < d->plot->height)
@@ -65,7 +64,7 @@ void	calc_aligned(t_data *d)
 	int		x;
 
 	ft_make_identity_matrix(global_matrix);
-	ft_tr_rotate(global_matrix, d->xr, d->yr, 0);
+	ft_tr_rotate(global_matrix, d->xr, d->yr, d->zr);
 	ft_tr_scale(global_matrix, 
 		(WINDOW_SIZE_X * d->scale) / d->plot->width, 
 		(WINDOW_SIZE_Y * d->scale) / d->plot->height, 0);
@@ -104,9 +103,10 @@ int		expose_hook(t_data *d)
 
 void	draw_everything(t_data *d)
 {
-	d->xr = 0.2;
-	d->yr = 0.2;
-	d->scale = 1.0;
+	d->xr = 0.7;
+	d->yr = 0.7;
+	d->zr = 0.1;
+	d->scale = 0.5;
 	d->ytrans = 0;
 	d->xtrans = 0;
 	d->mlx = mlx_init();

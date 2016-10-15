@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/22 02:02:39 by mhurd             #+#    #+#             */
-/*   Updated: 2016/09/22 13:00:29 by mhurd            ###   ########.fr       */
+/*   Created: 2016/10/11 04:21:33 by mhurd             #+#    #+#             */
+/*   Updated: 2016/10/15 11:31:30 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+void	ft_exit(void)
 {
-	if (!new || !alst)
-		return ;
-	if (*alst)
-		new->next = *alst;
-	*alst = new;
+	exit(1);
+}
+
+void	ft_error(char *s)
+{
+	ft_putendl_fd(s, 2);
+	ft_exit();
+}
+
+void	ft_error_unknown(void)
+{
+	ft_putstr("Error: ");
+	ft_error(strerror(errno));
 }

@@ -15,7 +15,8 @@ NAME	= fdf
 SRC		= main.c \
 		  parser.c \
 		  renderer.c \
-		  hooks.c
+		  hooks.c \
+		  error.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

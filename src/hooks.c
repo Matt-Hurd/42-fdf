@@ -22,6 +22,10 @@ static	void	key_hook_rotation(int keycode, t_data *d)
 		d->yr += 0.05;
 	else if (keycode == KEY_ROT_Y_D)
 		d->yr -= 0.05;
+	else if (keycode == KEY_ROT_Z_U)
+		d->zr += 0.05;
+	else if (keycode == KEY_ROT_Z_D)
+		d->zr -= 0.05;
 }
 
 static	void	key_hook_translation(int keycode, t_data *d)
