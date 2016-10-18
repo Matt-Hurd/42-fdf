@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 16:06:16 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/15 11:25:31 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/18 11:36:02 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <errno.h>
-
 
 /*
 ** KEYS
@@ -48,4 +47,5 @@ void		draw_reload(t_data *d);
 void		ft_exit(void);
 void		ft_error(char *s);
 void		ft_error_unknown(void);
+int			expose_hook(t_data *d);
 #endif

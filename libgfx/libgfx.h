@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 16:42:11 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/10 02:29:26 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/18 11:34:53 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ typedef struct	s_vertex
 typedef struct	s_plot
 {
 	t_vertex	***points;
-	int		width;
-	int		height;
-	float	z_min;
-	float	z_max;
+	int			width;
+	int			height;
+	float		z_min;
+	float		z_max;
 }				t_plot;
 
 typedef struct	s_data

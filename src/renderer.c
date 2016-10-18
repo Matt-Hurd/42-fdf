@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/09 04:47:42 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/10 02:37:13 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/18 11:40:32 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,48 +25,48 @@ void	draw_map(t_data *d)
 		{
 			if (y < d->plot->height - 1)
 				ft_3d_drawline(d, *d->plot->points[y][x]->aligned,
-					*d->plot->points[y+1][x]->aligned);
+					*d->plot->points[y + 1][x]->aligned);
 			if (x < d->plot->width - 1)
 				ft_3d_drawline(d, *d->plot->points[y][x]->aligned,
-					*d->plot->points[y][x+1]->aligned);
+					*d->plot->points[y][x + 1]->aligned);
 		}
 	}
 }
 
 void	setup_world(t_data *d)
 {
-	float global_matrix[4][4];
+	float	global_matrix[4][4];
+	int		x;
+	int		y;
 
 	ft_make_identity_matrix(global_matrix);
 	ft_tr_translate(global_matrix,
 		-(d->plot->width / 2),
 		-(d->plot->height / 2),
 		0);
-
-	int x, y;
 	y = -1;
 	while (++y < d->plot->height)
 	{
 		x = -1;
 		while (++x < d->plot->width)
 		{
-			ft_vec_mult_mat(d->plot->points[y][x]->local, 
-				global_matrix, 
+			ft_vec_mult_mat(d->plot->points[y][x]->local,
+				global_matrix,
 				d->plot->points[y][x]->world);
 		}
 	}
 }
 
 void	calc_aligned(t_data *d)
-{	
+{
 	float	global_matrix[4][4];
 	int		y;
 	int		x;
 
 	ft_make_identity_matrix(global_matrix);
 	ft_tr_rotate(global_matrix, d->xr, d->yr, d->zr);
-	ft_tr_scale(global_matrix, 
-		(WINDOW_SIZE_X * d->scale) / d->plot->width, 
+	ft_tr_scale(global_matrix,
+		(WINDOW_SIZE_X * d->scale) / d->plot->width,
 		(WINDOW_SIZE_Y * d->scale) / d->plot->height, 0);
 	ft_tr_translate(global_matrix,
 		WINDOW_SIZE_X / 2 + d->xtrans,
@@ -77,10 +77,10 @@ void	calc_aligned(t_data *d)
 		x = -1;
 		while (++x < d->plot->width)
 		{
-			ft_vec_mult_mat(d->plot->points[y][x]->world, 
+			ft_vec_mult_mat(d->plot->points[y][x]->world,
 				global_matrix, d->plot->points[y][x]->aligned);
-			d->plot->points[y][x]->aligned->z 
-			= d->plot->points[y][x]->local->z;
+			d->plot->points[y][x]->aligned->z =
+			d->plot->points[y][x]->local->z;
 		}
 	}
 }
@@ -95,12 +95,6 @@ void	draw_reload(t_data *d)
 	mlx_destroy_image(d->mlx, d->img);
 }
 
-int		expose_hook(t_data *d)
-{
-	draw_reload(d);
-	return (0);
-}
-
 void	draw_everything(t_data *d)
 {
 	d->xr = 0.7;
@@ -111,9 +105,8 @@ void	draw_everything(t_data *d)
 	d->xtrans = 0;
 	d->mlx = mlx_init();
 	d->win = mlx_new_window(d->mlx, WINDOW_SIZE_X, WINDOW_SIZE_Y, "FdF");
-
 	setup_world(d);
 	mlx_expose_hook(d->win, expose_hook, d);
 	mlx_hook(d->win, 2, 3, key_hook, d);
-    mlx_loop(d->mlx);
+	mlx_loop(d->mlx);
 }

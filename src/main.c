@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 15:35:03 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/15 11:31:50 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/18 11:36:44 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Zoom:\n\
 	OUT: Keypad: -");
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_data	*data;
 

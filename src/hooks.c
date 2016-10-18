@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 01:12:45 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/10 02:31:10 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/18 11:37:23 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ static	void	key_hook_scale(int keycode, t_data *d)
 		d->scale += 0.1;
 	else if (keycode == KEY_ZOOM_OUT)
 		d->scale = fabs(d->scale - 0.1);
+}
+
+int				expose_hook(t_data *d)
+{
+	draw_reload(d);
+	return (0);
 }
 
 int				key_hook(int keycode, t_data *d)
