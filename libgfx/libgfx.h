@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 16:42:11 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/18 11:34:53 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/27 06:00:49 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct	s_data
 	int		bpp;
 	int		s_line;
 	int		ed;
+	int		*colors;
 	t_plot	*plot;
 }				t_data;
 
@@ -81,4 +82,5 @@ void			ft_make_identity_matrix(float matrix[4][4]);
 void			ft_3d_drawline(t_data *d, t_3d p1, t_3d p2);
 t_3d			*ft_make_3d(int x, int y, int z);
 t_vertex		*ft_make_vertex(int x, int y, int z);
+void			init_color_table(t_data *d);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 16:48:59 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/15 11:51:13 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/30 14:25:40 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,25 @@ static int			swap_vars(t_3d *p0, t_3d *p1)
 	return (1);
 }
 
-static unsigned int	color_by_height(float z, t_data *d)
+void				init_color_table(t_data *d)
 {
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
-	float			percent;
+	int				i;
+	float			f;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
 
-	percent = (z + fabs(d->plot->z_min)) / (d->plot->z_max - d->plot->z_min);
-	percent = MIN(MAX(percent, 0), 1);
-	red = ((COLOR2 >> 16) - (COLOR1 >> 16) * percent);
-	red += COLOR1 >> 16;
-	green = ((COLOR2 >> 8 & 0xFF) - (COLOR1 >> 8 & 0xFF)) * percent;
-	green += COLOR1 >> 8 & 0xFF;
-	blue = ((COLOR2 & 0xFF) - (COLOR1 & 0xFF)) * percent;
-	blue += COLOR1 & 0xFF;
-	return (((int)red) << 16 | ((int)green) << 8 | blue);
+	d->colors = (int *)malloc(sizeof(int) * 100);
+	f = 0;
+	i = -1;
+	while (++i < 100)
+	{
+		r = (sin(f) + 1) * 127;
+		g = (cos(f) + 1) * 127;
+		b = (-cos(f) + 1) * 127;
+		d->colors[i] = ((int)r) << 16 | ((int)g) << 8 | b;
+		f += M_PI / 100;
+	}
 }
 
 static void			find_deltas(float *delta, t_3d p0, t_3d p1)
@@ -52,14 +55,17 @@ static void			find_deltas(float *delta, t_3d p0, t_3d p1)
 	delta[2] = p1.z - p0.z;
 }
 
-static void			draw_point(t_data *d, int x, int y, int z)
+static void			draw_point(t_data *d, int x, int y, float z)
 {
-	int i;
-	int color;
+	int				i;
+	unsigned int	color;
+	float			which;
 
 	if (x > 0 && y > 0 && x < WINDOW_SIZE_X && y < WINDOW_SIZE_Y)
 	{
-		color = color_by_height(z, d);
+		which = ((z - d->plot->z_min)
+			/ (d->plot->z_max - d->plot->z_min)) * 100;
+		color = d->colors[abs((int)which - 1)];
 		i = (x * 4) + (y * d->s_line);
 		d->pixel_img[i] = color;
 		d->pixel_img[++i] = color >> 8;
@@ -91,7 +97,7 @@ void				ft_3d_drawline(t_data *d, t_3d p0, t_3d p1)
 			p0.y += (p0.y > p1.y) ? -1 : 1;
 			error -= 1.0;
 		}
-		p0.z -= (p0.z > p1.z) ? -(delta[2] / delta[0]) : delta[2] / delta[0];
+		p0.z += delta[2] / fabs(delta[0]);
 		p0.x += (p0.x > p1.x) ? -1 : 1;
 	}
 }

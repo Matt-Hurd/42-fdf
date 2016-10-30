@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/09 04:47:42 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/18 11:40:32 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/27 06:22:27 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void	draw_everything(t_data *d)
 	d->xtrans = 0;
 	d->mlx = mlx_init();
 	d->win = mlx_new_window(d->mlx, WINDOW_SIZE_X, WINDOW_SIZE_Y, "FdF");
+	init_color_table(d);
 	setup_world(d);
 	mlx_expose_hook(d->win, expose_hook, d);
 	mlx_hook(d->win, 2, 3, key_hook, d);

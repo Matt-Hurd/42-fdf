@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 23:23:39 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/09 19:40:43 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/18 17:08:17 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char			**ft_strsplit(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	wc = ft_count_words(s, 0, c);
+	wc = ft_count_words(s, c);
 	len = 0;
 	ret = (char **)ft_memalloc((wc + 1) * sizeof(char *));
 	if (!ret)
