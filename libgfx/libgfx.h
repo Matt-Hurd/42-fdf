@@ -6,7 +6,7 @@
 /*   By: mhurd <mhurd@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 14:35:51 by mhurd             #+#    #+#             */
-/*   Updated: 2016/10/30 14:36:06 by mhurd            ###   ########.fr       */
+/*   Updated: 2016/10/30 16:37:47 by mhurd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdlib.h>
 # include <math.h>
 # define ABS(x) ((x > 0) ? x : x * -1)
-# define COLOR2 0x16A085
-# define COLOR1 0xF4D03F
+# define COLOR1 0xa7f442
+# define COLOR2 0xc542f4
 # define WINDOW_SIZE_X 1000
 # define WINDOW_SIZE_Y 700
 
